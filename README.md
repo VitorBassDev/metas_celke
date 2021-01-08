@@ -20,3 +20,7 @@
 - Funcionalidade
 * Criação de Metas no banco de dados
 * Listar de Metas no banco de dados
+
+- Acesso à API
+* Bliblioteca CORS
+* Implementação do CORS como MIDDEWARE

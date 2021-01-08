@@ -1,9 +1,10 @@
 require('dotenv/config');
 
-const express   = require('express');
+const express   = require('express')
 const mongoose  = require('mongoose')
 const http      = require ('http');
-
+const cors 			= require ('cors');
+const { request, response } = require('express');
 
 // UTILIZAR A MODEL - META
 require('./models/Metas');
@@ -11,6 +12,16 @@ const Meta = mongoose.model('Meta')
 
 const app       = express();
 app.use(express.json());
+
+// IMPLEMENTAÇÃO DO CORS COMO MIDDEWARE
+app.use((request, response, next) =>{
+	response.header("Access-Control-Allow-Origin", "*")
+	response.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE")
+	response.header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-PINGOTHER")
+	app.use(cors());
+	next();
+})
+
 ///
 /**
  * Conexão com o banco de dados Local */
