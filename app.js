@@ -7,7 +7,7 @@ const cors 			= require ('cors');
 const { request, response } = require('express');
 
 // UTILIZAR A MODEL - META
-require('./models/Metas');
+require('./src/models/Metas');
 const Meta = mongoose.model('Meta')
 
 const app       = express();
@@ -75,5 +75,5 @@ app.post('/metas', async (request, response) => {
 
 const server = http.createServer(app);
   server.listen(process.env.PORT_BACKEND, () => {
-  console.log(`Novo Backend - Help a ONG - PORT`, process.env.PORT_BACKEND)
+  console.log(`Backend - Metas CELKE - PORT`, process.env.PORT_BACKEND)
 }); 
