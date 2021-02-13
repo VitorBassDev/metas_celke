@@ -73,6 +73,19 @@ app.post('/metas', async (request, response) => {
 			return response.status(200).json('Cadastrada com Sucesso')
 })
 
+app.delete('/metas', async (request, response) => {
+
+	await Meta.findByIdAndDelete(request.body, (err) =>{
+		if(err) {
+			console.log('Erro ao Deletar')
+			return response.status(400).json('Erro ao Deletar')
+		}
+	})
+			console.log('Deletado com Sucesso')
+			return response.status(200).json('Deletado com Sucesso')
+})
+
+
 const server = http.createServer(app);
   server.listen(process.env.PORT_BACKEND, () => {
   console.log(`Backend - Metas CELKE - PORT`, process.env.PORT_BACKEND)
