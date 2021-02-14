@@ -64,13 +64,19 @@ app.get('/metas', async(request, response) => {
 app.post('/metas', async (request, response) => {
 
 	await Meta.create(request.body, (err) =>{
-		if(err) {
-			console.log('Erro ao Cadastrar')
-			return response.status(400).json('Erro ao Cadastrar')
-		}
+		if(err)  return res.status(400).json ({
+			error: true,
+			//console.log('Erro ao Cadastrar')
+			message: "Erro: Meta não cadastrada com Sucesso"
+			//return response.status(400).json('Erro ao Cadastrar')
+		})
 	})
-			console.log('Cadastrado com Sucesso')
-			return response.status(200).json('Cadastrada com Sucesso')
+	
+		console.log('Cadastrado com Sucesso')
+		return response.status(200).json({
+			error: false,
+			message: 'Cadastrada com Sucesso'
+		})
 })
 
 app.delete('/metas', async (request, response) => {
